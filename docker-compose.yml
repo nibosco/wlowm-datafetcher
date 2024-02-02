@@ -1,0 +1,17 @@
+version: '3'
+services:
+  data-fetcher:
+    build:
+      context: .
+    image: wlowm_datafetcher
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: ${CSV_PATH}
+        target: /data
+    environment:
+      - TZ=${TIMEZONE}
+    restart: always
+
+         

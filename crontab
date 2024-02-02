@@ -1,0 +1,1 @@
+$CRON_INTERVAL python /fetcher/datafetcher_wlowm.py >> /var/log/cron.log 2>&1
