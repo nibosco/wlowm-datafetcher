@@ -1,7 +1,11 @@
-FROM python:3.9.18-alpine
+FROM python:3.9.19-alpine
 
 WORKDIR /fetcher
 
+# Install curl and nano fur debugging
+RUN apk update && apk add --no-cache curl nano
+
+# Copy the requirements file separately to leverage Docker cache
 COPY . .
 
 # Install dependencies
@@ -19,5 +23,3 @@ RUN chmod +x /start.sh
 
 # Run the start.sh script
 CMD ["/start.sh"]
-
-

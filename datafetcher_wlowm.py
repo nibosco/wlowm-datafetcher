@@ -5,6 +5,7 @@ from datetime import datetime
 import requests
 import os
 from openmeteo_apicall import get_weatherdata
+from influxhelper import last_row_to_influx
 
 #variables
 csv_path = "/data/wlowm_data.csv"
@@ -134,6 +135,11 @@ del(cols)
 
 #Saving to csv
 wlowm_df.to_csv(csv_path)
+
+#Saving to influx
+if os.environ.get("INFLUXDB_TOKEN"):
+    last_row_to_influx(wlowm_df)
+    
 print("------\nFetching data FINISHED\n------")
 
 

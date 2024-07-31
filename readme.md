@@ -13,7 +13,7 @@ All config parameters can be changed in the .env file.<br>
 For the open.meteo API-call the latitude, longitude and timezone need to be set. The given timezone is also used to set the timezone of the container itself.
 The url-endpoint of the sensor needs to be set accordingly. See manufacturers documentation for that.<br>
 The schedule for running the script is set using a cron job. Define the planned interval using ```CRON_INTERVAL``` in the crontab-format.<br>
-```CSV_PATH``` is used to bind a host directory for data storage.
+```CSV_PATH``` is used to bind a host directory for data storage. If an influxdb instance is used additonally, define the corresponding values in .env file.
 
 
 ```python
@@ -32,6 +32,12 @@ URL_ENDPOINT="XYZ" #(default: "http://liquid-check/infos.json")
 CRON_INTERVAL=0 * * * *
 #bind host directory for data-output
 CSV_PATH=/PATH/on/host/data
+
+#if influxdb is used
+INFLUXDB_TOKEN ="yxz123"
+INFLUXDB_BUCKET = "bucket-name"
+ORG = "org-name"
+URL = "http://xyz:1234"
 ```
 
 ## **Spinning up a container :ship:** 
@@ -94,7 +100,7 @@ The selection can be easily adapted. Changes to the [```datafechter_wlowm.py```]
 # Outlook :telescope:
 
 - supporting storing data into InfluxDB instance <br>
-![Progress](https://progress-bar.dev/33/?title=pending)
+![Progress](https://progress-bar.dev/100/?title=completed)
 
 - training model for waterlevel prediction<br>
-![Progress](https://progress-bar.dev/1/?title=data-mining)
+![Progress](https://progress-bar.dev/40/?title=data-mining)
